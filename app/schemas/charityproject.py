@@ -1,14 +1,8 @@
 from datetime import datetime
 from typing import Optional
 
-from pydantic import (
-    BaseModel,
-    Extra,
-    Field,
-    NonNegativeInt,
-    PositiveInt,
-    root_validator,
-)
+from pydantic import (BaseModel, Extra, Field, NonNegativeInt, PositiveInt,
+                      root_validator)
 
 from app.core.constants import DEFAULT_AMOUNT, MAX_NAME_LENGTH, MIN_LENGTH
 

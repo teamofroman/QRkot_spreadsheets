@@ -7,12 +7,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.crud.base import CRUDBase
 from app.models import CharityProject, User
 
-from .validators import (
-    check_charity_project_before_edit,
-    check_charity_project_invested,
-    check_charity_project_is_closed,
-    check_charity_project_name_duplicate,
-)
+from .validators import (check_charity_project_before_edit,
+                         check_charity_project_invested,
+                         check_charity_project_is_closed,
+                         check_charity_project_name_duplicate)
 
 
 class CRUDCharityProject(CRUDBase):

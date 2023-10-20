@@ -5,11 +5,8 @@ from app.api.validators import check_charity_project_exists_by_id
 from app.core.db import get_async_session
 from app.core.user import current_superuser
 from app.crud.charityproject import charity_project_crud
-from app.schemas.charityproject import (
-    CharityProjectCreate,
-    CharityProjectDB,
-    CharityProjectUpdate,
-)
+from app.schemas.charityproject import (CharityProjectCreate, CharityProjectDB,
+                                        CharityProjectUpdate)
 
 router = APIRouter()
 
