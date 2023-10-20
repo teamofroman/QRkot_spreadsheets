@@ -41,6 +41,23 @@ pip install -r requirements.txt
   умолчанию - `SECRERT`
 - `FIRST_SUPERUSER_EMAIL` - email автоматически создаваемого администратора
 - `FIRST_SUPERUSER_PASSWORD` - его пароль
+- `CREATE_SAMPLE_DATA` - создавать тестовые данные (True) или нет (False)
+
+Данные для доступа к GoogleAPI
+- `TYPE`
+- `PROJECT_ID`
+- `PRIVATE_KEY_ID`
+- `PRIVATE_KEY`
+- `CLIENT_EMAIL`
+- `CLIENT_ID` 
+- `AUTH_URI`
+- `TOKEN_URI`
+- `AUTH_PROVIDER_X509_CERT_URL`
+- `client_x509_cert_url`
+- `UNIVERSE_DOMAIN`
+
+Пользователь (его e-mail), которому дается доступ к создаваемым GoogleSheets
+- `EMAIL`
 
 Если не указывать `FIRST_SUPERUSER_EMAIL` и `FIRST_SUPERUSER_PASSWORD`, то 
 администратор не создается и его надо создать вручную.
