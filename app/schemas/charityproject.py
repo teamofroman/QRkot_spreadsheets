@@ -4,7 +4,8 @@ from typing import Optional
 from pydantic import (BaseModel, Extra, Field, NonNegativeInt, PositiveInt,
                       root_validator)
 
-from app.core.constants import DEFAULT_AMOUNT, MAX_NAME_LENGTH, MIN_LENGTH
+from app.core.constants import (DEFAULT_AMOUNT, MAX_NAME_LENGTH,
+                                MIN_STRING_PARAM_LENGTH)
 
 
 class CharityProjectBase(BaseModel):
@@ -12,10 +13,10 @@ class CharityProjectBase(BaseModel):
 
     name: Optional[str] = Field(
         None,
-        min_length=MIN_LENGTH,
+        min_length=MIN_STRING_PARAM_LENGTH,
         max_length=MAX_NAME_LENGTH,
     )
-    description: Optional[str] = Field(None, min_length=MIN_LENGTH)
+    description: Optional[str] = Field(None, min_length=MIN_STRING_PARAM_LENGTH)
     full_amount: Optional[PositiveInt]
 
     class Config:
@@ -38,8 +39,8 @@ class CharityProjectDB(CharityProjectBase):
 class CharityProjectCreate(CharityProjectBase):
     """Схема для создания проекта"""
 
-    name: str = Field(None, min_length=MIN_LENGTH, max_length=MAX_NAME_LENGTH)
-    description: str = Field(None, min_length=MIN_LENGTH)
+    name: str = Field(None, min_length=MIN_STRING_PARAM_LENGTH, max_length=MAX_NAME_LENGTH)
+    description: str = Field(None, min_length=MIN_STRING_PARAM_LENGTH)
     full_amount: PositiveInt
 
     @root_validator(skip_on_failure=True)

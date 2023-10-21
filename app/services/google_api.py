@@ -3,12 +3,11 @@ from datetime import datetime
 from aiogoogle import Aiogoogle
 
 from app.core.config import settings
-
-FORMAT = "%Y/%m/%d %H:%M:%S"
+from app.core.constants import SHEET_TITLE_DATE_TIME_FORMAT
 
 
 async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
-    now_date_time = datetime.now().strftime(FORMAT)
+    now_date_time = datetime.now().strftime(SHEET_TITLE_DATE_TIME_FORMAT)
 
     service = await wrapper_services.discover('sheets', 'v4')
 
@@ -37,7 +36,7 @@ async def spreadsheets_create(wrapper_services: Aiogoogle) -> str:
 
 
 async def set_user_permissions(
-    spreadsheet_id: str, wrapper_services: Aiogoogle
+        spreadsheet_id: str, wrapper_services: Aiogoogle
 ) -> None:
     permissions_body = {
         'type': 'user',
@@ -53,9 +52,10 @@ async def set_user_permissions(
 
 
 async def spreadsheets_update_value(
-    spreadsheet_id: str, charity_projects: list, wrapper_services: Aiogoogle
+        spreadsheet_id: str, charity_projects: list,
+        wrapper_services: Aiogoogle
 ) -> None:
-    now_date_time = datetime.now().strftime(FORMAT)
+    now_date_time = datetime.now().strftime(SHEET_TITLE_DATE_TIME_FORMAT)
     service = await wrapper_services.discover('sheets', 'v4')
 
     table_values = [

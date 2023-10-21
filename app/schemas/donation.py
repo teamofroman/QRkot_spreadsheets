@@ -3,12 +3,12 @@ from typing import Optional
 
 from pydantic import BaseModel, Extra, Field, NonNegativeInt, PositiveInt
 
-from app.core.constants import MIN_LENGTH
+from app.core.constants import MIN_STRING_PARAM_LENGTH
 
 
 class DonationBase(BaseModel):
     full_amount: PositiveInt
-    comment: Optional[str] = Field(None, min_length=MIN_LENGTH)
+    comment: Optional[str] = Field(None, min_length=MIN_STRING_PARAM_LENGTH)
 
     class Config:
         extra = Extra.forbid

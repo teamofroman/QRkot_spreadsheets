@@ -2,6 +2,7 @@ from aiogoogle import Aiogoogle
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.core.constants import BASE_GOOGLE_SHEET_URL
 from app.core.db import get_async_session
 from app.core.google_client import get_service
 from app.core.user import current_superuser
@@ -14,12 +15,11 @@ router = APIRouter()
 
 @router.post(
     '/',
-    # response_model=list[dict[str, str]],
     dependencies=[Depends(current_superuser)],
 )
 async def get_report(
     session: AsyncSession = Depends(get_async_session),
-    wrapper_services: Aiogoogle = Depends(get_service),  # «Обёртка»
+    wrapper_services: Aiogoogle = Depends(get_service),
 ):
     """Только для суперюзеров."""
     closed_projects = await get_projects_by_completion_rate(session)
@@ -30,4 +30,4 @@ async def get_report(
         spreadsheet_id, closed_projects, wrapper_services
     )
 
-    return f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}'
+    return f'{BASE_GOOGLE_SHEET_URL}{spreadsheet_id}'
